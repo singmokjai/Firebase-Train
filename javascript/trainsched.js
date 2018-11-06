@@ -46,11 +46,39 @@ $("#add-train-btn").on("click", function() {
 
 });
 
+// Store property value from session to elements
+
 $("#trainName").val(sessionStorage.getItem("Train"));
 $("#trainDest").val(sessionStorage.getItem("Destination"));
 $("#trainTime").val(sessionStorage.getItem("First Train Time"));
 $("#trainFreq").val(sessionStorage.getItem("Frequency"));
+$("#add-train-btn").on("click", function() {
 
+if ($("#trainName").val().trim() === "" ||
+    $("#trainDest").val().trim() === "" ||
+    $("#trainTime").val().trim() === "" ||
+    $("#trainFreq").val().trim() === "") 
+    {
+        alert("Please input missing fields to proceed.");
+    } else {
+
+        train = $("#trainName").val().trim();
+        destination = $("#trainDest").val().trim();
+        firstTrain = $("#trainTime").val().trim();
+        frequency = $("#trainFreq").val().trim();
+        $(".form-control").val("");
+        database.ref().push({
+            
+            train: train,
+            destination: destination,
+            firstTrain: firstTrain,
+            frequency: frequency,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP});
+
+    }
+    
+    sessionStorage.clear();
+})
 
 
 currentTime();
