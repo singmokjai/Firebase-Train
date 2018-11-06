@@ -16,6 +16,12 @@ body {
     
 }
 
+#currentT {
+
+    text-align: center;
+    
+}
+
 form {
 
     width: 40%;
