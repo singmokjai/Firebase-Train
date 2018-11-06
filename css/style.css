@@ -15,3 +15,15 @@ body {
     margin: 0 auto;
     
 }
+
+form {
+
+    width: 40%;
+}
+
+.card-header, .card-body, {
+
+    margin: 0 auto;
+
+}
+
