@@ -31,7 +31,7 @@ function currentTime() {
 
 }
 
-// Storing values into variables created
+// Storing values into variables created, set session properties
 
 $("#add-train-btn").on("click", function() {
 
@@ -52,14 +52,18 @@ $("#trainName").val(sessionStorage.getItem("Train"));
 $("#trainDest").val(sessionStorage.getItem("Destination"));
 $("#trainTime").val(sessionStorage.getItem("First Train Time"));
 $("#trainFreq").val(sessionStorage.getItem("Frequency"));
-$("#add-train-btn").on("click", function() {
+$("#add-train-btn").on("click", function(event) {
+
+    event.preventDefault();
 
 if ($("#trainName").val().trim() === "" ||
     $("#trainDest").val().trim() === "" ||
     $("#trainTime").val().trim() === "" ||
     $("#trainFreq").val().trim() === "") 
     {
+
         alert("Please input missing fields to proceed.");
+
     } else {
 
         train = $("#trainName").val().trim();
@@ -69,6 +73,8 @@ if ($("#trainName").val().trim() === "" ||
         $(".form-control").val("");
         database.ref().push({
             
+        // Push values to database
+
             train: train,
             destination: destination,
             firstTrain: firstTrain,
@@ -78,10 +84,43 @@ if ($("#trainName").val().trim() === "" ||
     }
     
     sessionStorage.clear();
+
+});
+
+database.ref().on("child_added", function(childSnapshot) {
+
+    // Start time pushed back so will come before current time
+
+    var startTime = moment(childSnapshot.val().firstTrain, "HH:mm").subtract(1, "years");
+    console.log(startTime);
+
+    // Current time equal to moment
+
+    var currentTime = moment();
+    console.log("Current Time: " + moment(currentTime).format("HH:mm"));
+    
+    // Difference between time
+
+    var diffTime = moment().diff(moment(startTime), "minutes");
+    console.log("Difference in time: " + diffTime);
+
+    // Remainder
+
+    var tRemainder = diffTime % childSnapshot.val().frequency;
+    console.log(tRemainder);
+
+
+
+
+
+
 })
 
 
-currentTime();
+
+
+
+currentTime()
 
 
 
