@@ -109,6 +109,28 @@ database.ref().on("child_added", function(childSnapshot) {
     var tRemainder = diffTime % childSnapshot.val().frequency;
     console.log(tRemainder);
 
+    // Minutes for next train
+
+    var trainArrival = childSnapshot.val().frequency - tRemainder;
+    console.log("Minutes til next train: " + trainArrival, "minutes");
+
+    // Next train
+
+    var nextTrain = moment().add(trainArrival, "minutes");
+    console.log("Arrival: " + moment(nextTrain).format("HH:mm"));
+
+    // Add new row for new train added
+
+    var newRow = $("<tr>");
+    newRow.append($("<td>" + childSnapshot.val().train + "</td>" ));
+    newRow.append($("<td>" + childSnapshot.val().destination + "</td>" ));
+    newRow.append($("<td>" + childSnapshot.val().train + "</td>" ));
+    newRow.append($("<td>" + childSnapshot.val().firstTrain + "</td>" ));
+    newRow.append($("<td>" + childSnapshot.val().frequency + "</td>" ));
+    newRow.append($("<td>" + moment(nextTrain).format("LT") + "</td>" ));
+    $("#train-rows").append(newRow);
+
+    console.log(newRow)
 
 
 
