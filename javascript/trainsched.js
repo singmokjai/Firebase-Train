@@ -124,10 +124,10 @@ database.ref().on("child_added", function(childSnapshot) {
     var newRow = $("<tr>");
     newRow.append($("<td>" + childSnapshot.val().train + "</td>" ));
     newRow.append($("<td>" + childSnapshot.val().destination + "</td>" ));
-    newRow.append($("<td>" + childSnapshot.val().train + "</td>" ));
-    newRow.append($("<td>" + childSnapshot.val().firstTrain + "</td>" ));
     newRow.append($("<td>" + childSnapshot.val().frequency + "</td>" ));
     newRow.append($("<td>" + moment(nextTrain).format("LT") + "</td>" ));
+    newRow.append($("<td>" + trainArrival + "</td>"));
+    console.log(trainArrival)
     $("#train-rows").append(newRow);
 
     console.log(newRow)
@@ -138,11 +138,12 @@ database.ref().on("child_added", function(childSnapshot) {
 
 })
 
+currentTime();
+setInterval(function() {
 
+    window.location.reload();
 
-
-
-currentTime()
+}, 60000)
 
 
 
