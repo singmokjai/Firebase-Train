@@ -57,6 +57,7 @@ h3 {
     text-shadow: 
     4px 4px 0px #d5d5d5, 
     7px 7px 0px rgba(0, 0, 0, 0.2);
+    color: slateblue;
 
 }
 
@@ -70,7 +71,7 @@ h3 {
 
     text-align: center;
     font-weight: bolder;
-    color: darkkhaki;
+    color: gold;
     
 }
 
@@ -81,9 +82,30 @@ form {
 
 }
 
+
+.form-control {
+
+    border-radius: 40px 100px;
+    background-color: silver;
+
+}
+
+.form-control form {
+
+    border-radius: 40px 100px;
+
+}
+
+.table .thead-dark th {
+
+    background-color: darksalmon;
+
+}
+
 label {
 
     color: ghostwhite;
+    border-radius: 100px 40px;
 
 }
 
@@ -93,16 +115,23 @@ label {
 
 }
 
+
 table {
 
     text-align: center;
-    
+
 }
 
 button {
 
     width: 30%;
 
+}
+
+.card {
+
+    width: 100;
+    border-radius: 100px 40px;
 
 }
 
