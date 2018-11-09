@@ -139,13 +139,13 @@ button {
 
 /* Media Screens */
 
-@media only screen and (max-width: 768px) and (orientation: landscape) {
+@media only screen and (max-width: 640px) and (orientation: landscape) {
 
     width:  100%;
 
 }
 
-@media only screen and (max-width: 768px) and (orientation: portrait) {
+@media only screen and (max-width: 640px) and (orientation: portrait) {
 
     width:  100%;
 
