@@ -127,16 +127,11 @@ database.ref().on("child_added", function(childSnapshot) {
     newRow.append($("<td>" + childSnapshot.val().frequency + "</td>" ));
     newRow.append($("<td>" + moment(nextTrain).format("LT") + "</td>" ));
     newRow.append($("<td>" + trainArrival + "</td>"));
-    console.log(trainArrival)
     $("#train-rows").append(newRow);
 
-    console.log(newRow)
-
-
-
-
-
 })
+
+// Refresh page every minute 
 
 currentTime();
 setInterval(function() {
