@@ -6,7 +6,7 @@ MTA-2.0 is a train application that displays the schedule of train arrival and d
 
 # Technologies Used
 
-Javascipt, jQuery, Firebase, Moment.js, HTML5, CSS3
+Javascipt, jQuery, Firebase, Moment.js, HTML5, CSS3, Bootstrap
 
 # Deployed Site
 
